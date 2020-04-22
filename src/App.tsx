@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import Button from "@material-ui/core/Button";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,10 +19,8 @@ function App() {
         >
           Learn React
         </a>
-        <Button variant="contained" color="primary">
-          Primary
-        </Button>
       </header>
+      <Footer></Footer>
     </div>
   );
 }
