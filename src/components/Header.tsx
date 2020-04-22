@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: theme.spacing(2),
     },
     title: {
+      display: "none",
       [theme.breakpoints.up("sm")]: {
         display: "block",
       },
@@ -78,7 +79,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Teach Funding Routes
+            Teach Each Other Funding Routes
           </Typography>
           <div className={classes.grow} />
           <div className={classes.search}>
@@ -103,9 +104,9 @@ export default function Header() {
           scrollButtons="off"
         >
           <Tab label="ホーム" />
-          <Tab label="サイト一覧" />
-          <Tab label="サイトを周知する" />
-          <Tab label="コンタクト" />
+          <Tab label="紹介サイト一覧" />
+          <Tab label="サイトを登録する" />
+          <Tab label="フィードバックを送信" />
         </Tabs>
       </AppBar>
     </div>
