@@ -8,13 +8,6 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    grow: {
-      flexGrow: 1,
-    },
-    toolbar: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(2),
-    },
     title: {
       [theme.breakpoints.up("sm")]: {
         display: "block",
