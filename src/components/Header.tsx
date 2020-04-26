@@ -12,6 +12,7 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,10 +71,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Header() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
+	const [value, setValue] = React.useState(0);
+	const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+		setValue(newValue);
+	};
+
   return (
     <div>
       <AppBar position="static">
@@ -98,15 +100,15 @@ export default function Header() {
         </Toolbar>
         <Tabs
           value={value}
-          onChange={handleChange}
+					onChange={handleChange}
           aria-label="simple tabs example"
           variant="scrollable"
           scrollButtons="off"
         >
-          <Tab label="ホーム" />
-          <Tab label="紹介サイト一覧" />
-          <Tab label="サイトを登録する" />
-          <Tab label="フィードバックを送信" />
+					<Tab label="ホーム" value={0} component={Link} to="/" />
+					<Tab label="紹介サイト一覧" value={1} component={Link} to="/site" />
+					<Tab label="サイトを登録する" value={2} component={Link} to="/site-registration" />
+					<Tab label="フィードバックを送信" value={3} component={Link} to="/send-feedback" />
         </Tabs>
       </AppBar>
     </div>
