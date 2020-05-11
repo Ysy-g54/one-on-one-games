@@ -10,13 +10,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header></Header>
+        <Header />
 				<Switch>
 					<Route label="ホーム" exact path="/" component={Home} />
           <Route label="紹介サイト一覧" path="/site" component={Site} />
         </Switch>
       </BrowserRouter>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
