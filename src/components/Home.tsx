@@ -10,7 +10,7 @@ import {
 const useStyles = makeStyles(() =>
 	createStyles({
 		imgStyle: {
-			width: "100%",
+			width: "80%",
 			height: "auto"
 	}
 	})
