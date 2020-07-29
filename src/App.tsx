@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Site from "./components/Site";
+import SiteRegistration from "./components/SiteRegistration";
 import Footer from "./components/Footer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -14,6 +15,7 @@ function App() {
 				<Switch>
 					<Route label="ホーム" exact path="/" component={Home} />
           <Route label="紹介サイト一覧" path="/site" component={Site} />
+          <Route label="紹介サイト一覧" path="/site-registration" component={SiteRegistration} />
         </Switch>
       </BrowserRouter>
       <Footer />
