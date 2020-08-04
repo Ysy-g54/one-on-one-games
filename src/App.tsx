@@ -15,7 +15,7 @@ function App() {
 				<Switch>
 					<Route label="ホーム" exact path="/" component={Home} />
           <Route label="紹介サイト一覧" path="/site" component={Site} />
-          <Route label="紹介サイト一覧" path="/site-registration" component={SiteRegistration} />
+          <Route label="紹介サイト登録" path="/site-registration" component={SiteRegistration} />
         </Switch>
       </BrowserRouter>
       <Footer />
