@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    maxWidth: 345,
   },
   bullet: {
     display: "inline-block",
@@ -26,58 +26,54 @@ const useStyles = makeStyles({
   },
 });
 
+export interface SiteDetail {
+  siteNm: string;
+  description: string;
+  siteUrl: string;
+}
+
 export default function SimpleCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  const datas: SiteDetail[] = [
+    {
+      siteNm: "CAMPFIRE",
+      description: "クラウドファンディング",
+      siteUrl: "https://camp-fire.jp/",
+    },
+    {
+      siteNm: "Makuake（マクアケ）",
+      description: "クラウドファンディング",
+      siteUrl: "https://www.makuake.com/",
+    },
+  ];
 
   return (
     <div>
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-          <Typography className={classes.title} gutterBottom>
-            サイト名: CAMPFIRE
-          </Typography>
-          <Typography className={classes.subTitle} gutterBottom>
-            サイトについて: クラウドファンディング
-          </Typography>
-          <Typography variant="body2" component="p">
-            サイトURL: https://camp-fire.jp/
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button
-            size="small"
-            href="https://camp-fire.jp/"
-            target="_blank"
-            rel="noopener"
-          >
-            サイトへジャンプする
-          </Button>
-        </CardActions>
-      </Card>
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-          <Typography className={classes.title} gutterBottom>
-            サイト名: Makuake（マクアケ）
-          </Typography>
-          <Typography className={classes.subTitle} gutterBottom>
-            サイトについて: クラウドファンディング
-          </Typography>
-          <Typography variant="body2" component="p">
-            サイトURL: https://www.makuake.com/
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button
-            size="small"
-            href="https://www.makuake.com/"
-            target="_blank"
-            rel="noopener"
-          >
-            サイトへジャンプする
-          </Button>
-        </CardActions>
-      </Card>
+      {datas.map((data: SiteDetail) => (
+        <Card className={classes.root} variant="outlined">
+          <CardContent>
+            <Typography className={classes.title} gutterBottom>
+              サイト名: {data.siteNm}
+            </Typography>
+            <Typography className={classes.subTitle} gutterBottom>
+              サイトについて: {data.description}
+            </Typography>
+            <Typography variant="body2" component="p">
+              サイトURL: {data.siteUrl}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="small"
+              href={data.siteUrl}
+              target="_blank"
+              rel="noopener"
+            >
+              サイトへジャンプする
+            </Button>
+          </CardActions>
+        </Card>
+      ))}
     </div>
   );
 }
