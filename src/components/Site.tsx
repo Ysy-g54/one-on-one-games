@@ -1,28 +1,24 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import {
+  Button,
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
+    maxWidth: 420,
   },
   title: {
-    fontSize: 18,
+    fontSize: 24,
   },
   subTitle: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+    fontSize: 20,
   },
 });
 
@@ -42,7 +38,7 @@ export default function SimpleCard() {
     },
     {
       siteNm: "Makuake（マクアケ）",
-      description: "クラウドファンディング",
+      description: "面白いアイデアが毎日続々と登場する国内最大級のクラウドファンディングサービスです。",
       siteUrl: "https://www.makuake.com/",
     },
   ];
@@ -50,29 +46,33 @@ export default function SimpleCard() {
   return (
     <div>
       {datas.map((data: SiteDetail) => (
-        <Card className={classes.root} variant="outlined">
-          <CardContent>
-            <Typography className={classes.title} gutterBottom>
-              サイト名: {data.siteNm}
-            </Typography>
-            <Typography className={classes.subTitle} gutterBottom>
-              サイトについて: {data.description}
-            </Typography>
-            <Typography variant="body2" component="p">
-              サイトURL: {data.siteUrl}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              size="small"
-              href={data.siteUrl}
-              target="_blank"
-              rel="noopener"
-            >
-              サイトへジャンプする
-            </Button>
-          </CardActions>
-        </Card>
+        <Grid container justify="center">
+          <Box m={4}>
+            <Card className={classes.root} variant="outlined">
+              <CardContent>
+                <Typography className={classes.title} gutterBottom>
+                  サイト名: {data.siteNm}
+                </Typography>
+                <Typography className={classes.subTitle} gutterBottom>
+                  サイトについて: {data.description}
+                </Typography>
+                <Typography variant="body1" component="p">
+                  サイトURL: {data.siteUrl}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  href={data.siteUrl}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  サイトへジャンプする
+                </Button>
+              </CardActions>
+            </Card>
+          </Box>
+        </Grid>
       ))}
     </div>
   );
