@@ -40,6 +40,7 @@ export interface ResponseData {
 export default function SimpleCard() {
   const [siteDetails, setDatas] = React.useState<SiteDetail[]>([]);
   const [isLoading, setLoading] = React.useState(true);
+  const [count, setCount] = React.useState(0);
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -49,13 +50,24 @@ export default function SimpleCard() {
       )
       .then((response) => {
         setDatas(response.data.siteDetails);
+        setCount(response.data.size);
         setLoading(false);
       });
   }, []);
 
   return (
     <Grid container justify="center">
-      {isLoading && <CircularProgress size={80} color="secondary" />}
+      {isLoading ? (
+        <CircularProgress size={80} color="secondary" />
+      ) : (
+        <Grid item xs={12}>
+          <Box m={4} component="div">
+            <Typography className={classes.title} gutterBottom>
+              サイト数: {count}個
+            </Typography>
+          </Box>
+        </Grid>
+      )}
       {siteDetails.map((siteDetail: SiteDetail) => (
         <Box m={4} key={siteDetail.siteDetailId}>
           <Card className={classes.root} variant="outlined">
