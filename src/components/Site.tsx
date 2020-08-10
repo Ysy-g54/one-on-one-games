@@ -58,7 +58,9 @@ export default function SimpleCard() {
   return (
     <Grid container justify="center">
       {isLoading ? (
-        <CircularProgress size={80} color="secondary" />
+        <Box m={8}>
+          <CircularProgress size={80} color="secondary" />
+        </Box>
       ) : (
         <Grid item xs={12}>
           <Box m={4} component="div">
