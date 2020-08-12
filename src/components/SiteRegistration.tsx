@@ -3,17 +3,32 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   Box,
   Button,
+  CircularProgress,
   Snackbar,
   IconButton,
   TextField,
   Typography,
 } from "@material-ui/core";
+import { green } from "@material-ui/core/colors";
 import CloseIcon from "@material-ui/icons/Close";
+import axios from "axios";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     close: {
       padding: theme.spacing(0.5),
+    },
+    buttonProgress: {
+      color: green[500],
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      marginTop: -12,
+      marginLeft: -12,
+    },
+    wrapper: {
+      margin: theme.spacing(1),
+      position: "relative",
     },
   })
 );
@@ -38,6 +53,7 @@ export interface State {
 export default function SiteRegistration() {
   const [snackPack, setSnackPack] = React.useState<SnackbarMessage[]>([]);
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const [form, setItem] = React.useState({
     siteNm: "",
     description: "",
@@ -63,12 +79,44 @@ export default function SiteRegistration() {
   const registerSite = () => {
     let message: string = "";
     if (!Object.values(form).some((e) => e === "")) {
-      message = "サイトを登録しました!";
-      setItem({ siteNm: "", description: "", siteUrl: "", mail: "" });
+      setLoading(true);
+      const params = new URLSearchParams();
+      params.append("siteNm", form.siteNm);
+      params.append("description", form.description);
+      params.append("siteUrl", form.siteUrl);
+      params.append("mail", form.mail);
+      axios
+        .post(
+          "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwaWeRmmrACLAHh_7dxHT0bOwmQWF-hlvzTw2QwUNIpwH3BeXao/exec",
+          params
+        )
+        .then(() => {
+          message = "サイトを登録しました!";
+          setSnackPack((prev) => [
+            ...prev,
+            { message, key: new Date().getTime() },
+          ]);
+          setItem({
+            siteNm: "",
+            description: "",
+            siteUrl: "",
+            mail: "",
+          });
+          setLoading(false);
+        })
+        .catch(() => {
+          message =
+            "サイト登録に失敗しました。再度お試しいただくか、メール、またはフィードバックにてお問い合わせください。";
+          setSnackPack((prev) => [
+            ...prev,
+            { message, key: new Date().getTime() },
+          ]);
+          setLoading(false);
+        });
     } else {
       message = "登録に失敗しました。必須入力の部分を入力してください。";
+      setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
     }
-    setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }]);
   };
 
   const handleExited = () => {
@@ -96,6 +144,12 @@ export default function SiteRegistration() {
   return (
     <div>
       <Box mt={2}>
+        <Typography variant="h5">
+          クラウドファンディングのサイトや、紹介したいユニークなサイトを教えてください!
+          <br />
+          紹介したサイトは全体に公開されるので、入力内容については注意してください。
+        </Typography>
+        <br />
         <Typography variant="h6">*必須</Typography>
       </Box>
       <Box m={8}>
@@ -139,9 +193,19 @@ export default function SiteRegistration() {
         />
       </Box>
       <Box mt={4} mb={4}>
-        <Button variant="contained" color="primary" onClick={registerSite}>
-          登録する
-        </Button>
+        <div className={classes.wrapper}>
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={loading}
+            onClick={registerSite}
+          >
+            登録する
+          </Button>
+          {loading && (
+            <CircularProgress size={24} className={classes.buttonProgress} />
+          )}
+        </div>
       </Box>
       <Snackbar
         key={messageInfo ? messageInfo.key : undefined}
