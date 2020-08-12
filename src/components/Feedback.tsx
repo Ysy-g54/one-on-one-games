@@ -89,6 +89,7 @@ export default function SiteRegistration() {
             ...prev,
             { message, key: new Date().getTime() },
           ]);
+          setItem({ mail: "", content: "" });
           setLoading(false);
         })
         .catch(() => {
@@ -99,9 +100,6 @@ export default function SiteRegistration() {
             { message, key: new Date().getTime() },
           ]);
           setLoading(false);
-        })
-        .finally(() => {
-          setItem({ mail: "", content: "" });
         });
     } else {
       message = "必須入力の部分を入力してください。";
