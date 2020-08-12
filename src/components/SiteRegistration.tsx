@@ -29,6 +29,7 @@ export interface State {
   messageInfo?: SnackbarMessage;
   form: {
     siteNm: string;
+    description: string;
     siteUrl: string;
     mail: string;
   };
@@ -37,7 +38,12 @@ export interface State {
 export default function SiteRegistration() {
   const [snackPack, setSnackPack] = React.useState<SnackbarMessage[]>([]);
   const [open, setOpen] = React.useState(false);
-  const [form, setItem] = React.useState({ siteNm: "", siteUrl: "", mail: "" });
+  const [form, setItem] = React.useState({
+    siteNm: "",
+    description: "",
+    siteUrl: "",
+    mail: "",
+  });
   const [messageInfo, setMessageInfo] = React.useState<
     SnackbarMessage | undefined
   >(undefined);
@@ -58,7 +64,7 @@ export default function SiteRegistration() {
     let message: string = "";
     if (!Object.values(form).some((e) => e === "")) {
       message = "サイトを登録しました!";
-      setItem({ siteNm: "", siteUrl: "", mail: "" });
+      setItem({ siteNm: "", description: "", siteUrl: "", mail: "" });
     } else {
       message = "登録に失敗しました。必須入力の部分を入力してください。";
     }
@@ -92,28 +98,41 @@ export default function SiteRegistration() {
       <Box mt={2}>
         <Typography variant="h6">*必須</Typography>
       </Box>
-      <Box mt={8}>
+      <Box m={8}>
         <TextField
           label="サイト名*"
           name="siteNm"
+          fullWidth
           variant="outlined"
           value={form.siteNm}
           onChange={updateItem}
         />
       </Box>
-      <Box mt={4}>
+      <Box m={8}>
+        <TextField
+          label="サイトについての説明*"
+          name="description"
+          fullWidth
+          variant="outlined"
+          value={form.description}
+          onChange={updateItem}
+        />
+      </Box>
+      <Box m={8}>
         <TextField
           label="サイトURL*"
           name="siteUrl"
+          fullWidth
           variant="outlined"
           value={form.siteUrl}
           onChange={updateItem}
         />
       </Box>
-      <Box mt={4}>
+      <Box m={8}>
         <TextField
           label="あなたのメールアドレス*"
           name="mail"
+          fullWidth
           variant="outlined"
           value={form.mail}
           onChange={updateItem}
