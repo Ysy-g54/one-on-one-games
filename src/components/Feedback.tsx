@@ -140,7 +140,7 @@ export default function SiteRegistration() {
         <br />
         <Typography variant="h6">*必須</Typography>
       </Box>
-      <Box m={4}>
+      <Box m={8}>
         <TextField
           label="あなたのメールアドレス*"
           name="mail"
@@ -150,7 +150,7 @@ export default function SiteRegistration() {
           onChange={updateItem}
         />
       </Box>
-      <Box m={4}>
+      <Box m={8}>
         <TextField
           label="質問やメッセージ*"
           name="content"
