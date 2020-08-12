@@ -146,6 +146,8 @@ export default function SiteRegistration() {
       <Box mt={2}>
         <Typography variant="h5">
           クラウドファンディングのサイトや、紹介したいユニークなサイトを教えてください!
+          <br />
+          紹介したサイトは全体に公開されるので、入力内容については注意してください。
         </Typography>
         <br />
         <Typography variant="h6">*必須</Typography>
