@@ -79,7 +79,7 @@ export default function Header() {
   };
 
   const keyPress = (e: any) => {
-    if (e.key === "Enter") {
+    if (queryParam !== "" && e.key === "Enter") {
       searchData();
     }
   };
