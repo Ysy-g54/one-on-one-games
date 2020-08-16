@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Search from "./components/Search";
 import Site from "./components/Site";
 import SiteRegistration from "./components/SiteRegistration";
 import Feedback from "./components/Feedback";
@@ -26,6 +27,7 @@ function App() {
             path="/send-feedback"
             component={Feedback}
           />
+          <Route label="検索結果" path="/search" component={Search} />
         </Switch>
       </BrowserRouter>
       <Footer />
