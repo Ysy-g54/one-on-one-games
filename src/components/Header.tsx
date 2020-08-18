@@ -12,7 +12,7 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -71,10 +71,26 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Header() {
   const classes = useStyles();
-	const [value, setValue] = React.useState(0);
-	const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-		setValue(newValue);
-	};
+  const history = useHistory();
+  const [value, setValue] = React.useState(0);
+  const [queryParam, setQueryParam] = React.useState("");
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const keyPress = (e: any) => {
+    if (queryParam !== "" && e.key === "Enter") {
+      searchData();
+    }
+  };
+
+  const searchData = () => {
+    history.push(`/search?keyword=${queryParam}`);
+  };
+
+  const updateQueryParam = (e: any) => {
+    setQueryParam(e.target.value);
+  };
 
   return (
     <div>
@@ -95,20 +111,33 @@ export default function Header() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
+              value={queryParam}
+              onChange={updateQueryParam}
+              onKeyPress={(e) => keyPress(e)}
             />
           </div>
         </Toolbar>
         <Tabs
           value={value}
-					onChange={handleChange}
+          onChange={handleChange}
           aria-label="simple tabs example"
           variant="scrollable"
           scrollButtons="off"
         >
-					<Tab label="ホーム" value={0} component={Link} to="/" />
-					<Tab label="紹介サイト一覧" value={1} component={Link} to="/site" />
-					<Tab label="サイトを登録する" value={2} component={Link} to="/site-registration" />
-					<Tab label="フィードバックを送信" value={3} component={Link} to="/send-feedback" />
+          <Tab label="ホーム" value={0} component={Link} to="/" />
+          <Tab label="紹介サイト一覧" value={1} component={Link} to="/site" />
+          <Tab
+            label="サイトを登録する"
+            value={2}
+            component={Link}
+            to="/site-registration"
+          />
+          <Tab
+            label="フィードバックを送信"
+            value={3}
+            component={Link}
+            to="/send-feedback"
+          />
         </Tabs>
       </AppBar>
     </div>
