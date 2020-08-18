@@ -24,7 +24,7 @@ function Home() {
         <Typography variant="h2">Teach Each Other Funding Routes</Typography>
       </Box>
       <Typography variant="h5">
-        クラウドファンディング等のサイトを教え合うサイトです。
+        クラウドファンディング等のサイト・アプリ・サービスを教え合う場所です。
         <br />
         ここから新しい趣味・新しいことを見つけたり、助け合いましょう!
       </Typography>
