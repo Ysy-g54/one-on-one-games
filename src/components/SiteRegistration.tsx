@@ -65,6 +65,8 @@ export default function SiteRegistration() {
   >(undefined);
 
   React.useEffect(() => {
+    document.title = "紹介サイト登録 - Teach Each Other Funding Routes";
+
     if (snackPack.length && !messageInfo) {
       // Set a new snack when we don't have an active one
       setMessageInfo({ ...snackPack[0] });
