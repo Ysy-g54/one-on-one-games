@@ -21,6 +21,8 @@ export default function Site() {
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
+    document.title = "紹介サイト一覧 - Teach Each Other Funding Routes";
+
     axios
       .get(
         "https://api.codetabs.com/v1/proxy?quest=https://script.google.com/macros/s/AKfycbwaWeRmmrACLAHh_7dxHT0bOwmQWF-hlvzTw2QwUNIpwH3BeXao/exec"

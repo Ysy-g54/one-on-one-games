@@ -18,6 +18,10 @@ const useStyles = makeStyles(() =>
 
 function Home() {
   const classes = useStyles();
+  React.useEffect(() => {
+    document.title = "ホーム - Teach Each Other Funding Routes";
+  }, []);
+
   return (
     <div className="Home">
       <Box m={4}>
