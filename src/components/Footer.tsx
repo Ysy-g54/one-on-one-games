@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function Header() {
+export default function Footer() {
   const classes = useStyles();
   return (
     <div>

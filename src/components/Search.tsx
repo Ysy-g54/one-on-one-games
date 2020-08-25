@@ -23,6 +23,8 @@ export default function Search() {
   const location = useLocation();
 
   React.useEffect(() => {
+    document.title = "検索結果 - Teach Each Other Funding Routes";
+
     setDatas([]);
     setLoading(true);
     axios

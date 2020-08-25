@@ -18,6 +18,10 @@ const useStyles = makeStyles(() =>
 
 function Home() {
   const classes = useStyles();
+  React.useEffect(() => {
+    document.title = "ホーム - Teach Each Other Funding Routes";
+  }, []);
+
   return (
     <div className="Home">
       <Box m={4}>
@@ -30,10 +34,9 @@ function Home() {
       </Typography>
       <Box m={4}>
         <Button
-          variant="contained"
+          variant="outlined"
           disableElevation
           className={classes.button}
-          color="inherit"
           size="large"
           component={Link}
           to="/site-registration"

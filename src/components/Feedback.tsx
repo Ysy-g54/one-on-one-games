@@ -48,7 +48,7 @@ export interface State {
   };
 }
 
-export default function SiteRegistration() {
+export default function Feedback() {
   const [snackPack, setSnackPack] = React.useState<SnackbarMessage[]>([]);
   const [open, setOpen] = React.useState(false);
   const [form, setItem] = React.useState({ mail: "", content: "" });
@@ -58,6 +58,8 @@ export default function SiteRegistration() {
   >(undefined);
 
   React.useEffect(() => {
+    document.title = "フィードバック - Teach Each Other Funding Routes";
+
     if (snackPack.length && !messageInfo) {
       // Set a new snack when we don't have an active one
       setMessageInfo({ ...snackPack[0] });
@@ -142,7 +144,6 @@ export default function SiteRegistration() {
         <TextField
           label="あなたのメールアドレス*"
           name="mail"
-          variant="outlined"
           fullWidth
           value={form.mail}
           onChange={updateItem}
@@ -155,7 +156,6 @@ export default function SiteRegistration() {
           multiline
           fullWidth
           rows={6}
-          variant="outlined"
           value={form.content}
           onChange={updateItem}
         />
