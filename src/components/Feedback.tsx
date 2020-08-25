@@ -144,7 +144,6 @@ export default function Feedback() {
         <TextField
           label="あなたのメールアドレス*"
           name="mail"
-          variant="outlined"
           fullWidth
           value={form.mail}
           onChange={updateItem}
@@ -157,7 +156,6 @@ export default function Feedback() {
           multiline
           fullWidth
           rows={6}
-          variant="outlined"
           value={form.content}
           onChange={updateItem}
         />

@@ -161,7 +161,6 @@ export default function SiteRegistration() {
           label="サイト名*"
           name="siteNm"
           fullWidth
-          variant="outlined"
           value={form.siteNm}
           onChange={updateItem}
         />
@@ -171,7 +170,6 @@ export default function SiteRegistration() {
           label="サイトについての説明*"
           name="description"
           fullWidth
-          variant="outlined"
           value={form.description}
           onChange={updateItem}
         />
@@ -181,7 +179,6 @@ export default function SiteRegistration() {
           label="サイトURL*"
           name="siteUrl"
           fullWidth
-          variant="outlined"
           value={form.siteUrl}
           onChange={updateItem}
         />
@@ -191,7 +188,6 @@ export default function SiteRegistration() {
           label="あなたのメールアドレス*"
           name="mail"
           fullWidth
-          variant="outlined"
           value={form.mail}
           onChange={updateItem}
         />
