@@ -34,10 +34,9 @@ function Home() {
       </Typography>
       <Box m={4}>
         <Button
-          variant="contained"
+          variant="outlined"
           disableElevation
           className={classes.button}
-          color="inherit"
           size="large"
           component={Link}
           to="/site-registration"
