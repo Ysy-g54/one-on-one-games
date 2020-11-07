@@ -4,8 +4,11 @@ import {
   Box,
   Button,
   CircularProgress,
+  MenuItem,
   Snackbar,
+  Select,
   IconButton,
+  InputLabel,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -46,6 +49,7 @@ export interface State {
     siteNm: string;
     description: string;
     siteUrl: string;
+    tag: string;
     mail: string;
   };
 }
@@ -58,6 +62,7 @@ export default function SiteRegistration() {
     siteNm: "",
     description: "",
     siteUrl: "",
+    tag: "",
     mail: "",
   });
   const [messageInfo, setMessageInfo] = React.useState<
@@ -87,6 +92,7 @@ export default function SiteRegistration() {
       params.append("description", form.description);
       params.append("siteUrl", form.siteUrl);
       params.append("mail", form.mail);
+      params.append("tag", form.tag);
       axios
         .post(
           "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwaWeRmmrACLAHh_7dxHT0bOwmQWF-hlvzTw2QwUNIpwH3BeXao/exec",
@@ -102,6 +108,7 @@ export default function SiteRegistration() {
             siteNm: "",
             description: "",
             siteUrl: "",
+            tag: "",
             mail: "",
           });
           setLoading(false);
@@ -182,6 +189,14 @@ export default function SiteRegistration() {
           value={form.siteUrl}
           onChange={updateItem}
         />
+      </Box>
+      <Box m={8}>
+        <InputLabel>タグ</InputLabel>
+        <Select name="tag" fullWidth value={form.tag} onChange={updateItem}>
+          <MenuItem value="">なし</MenuItem>
+          <MenuItem value={"飲食店"}>飲食店</MenuItem>
+          <MenuItem value={"NPO"}>NPO</MenuItem>
+        </Select>
       </Box>
       <Box m={8}>
         <TextField
