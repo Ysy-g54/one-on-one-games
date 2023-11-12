@@ -9,7 +9,7 @@
 		"@types/node": "^13.13.15",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-router-dom": "^5.1.5",
-		"axios": "^0.21.1",
+		"axios": "^1.6.0",
 		"cra-template-typescript": "1.0.3",
 		"material-table": "^1.67.1",
 		"react": "^16.13.1",
